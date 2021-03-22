@@ -23,10 +23,10 @@ namespace CourseLibrary.API.Controllers
 
         [HttpGet]
         [HttpHead]
-        //[FromQuery(Name = "mainCategory")] can be removed and it will still work as mainCategory matches the field on the entity model
-        public ActionResult<IEnumerable<AuthorDto>> GetAuthors([FromQuery(Name = "mainCategory")] string mainCategory)
+        //[FromQuery(Name = "mainCategory")] can be removed and it will still work as mainCategory matches the field on the entity model and it's not a complex type
+        public ActionResult<IEnumerable<AuthorDto>> GetAuthors()
         {
-            var authorsFromRepo = _courseLibraryRepository.GetAuthors(mainCategory);
+            var authorsFromRepo = _courseLibraryRepository.GetAuthors(mainCategory, searchQuery);
 
             return Ok(_mapper.Map<IEnumerable<AuthorDto>>(authorsFromRepo));
         }

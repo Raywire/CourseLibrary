@@ -33,6 +33,8 @@ namespace CourseLibrary.API
                 setupAction.ReturnHttpNotAcceptable = true;
             }).AddXmlDataContractSerializerFormatters();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddScoped<ICourseLibraryRepository, CourseLibraryRepository>();
 
             var connectionString = "Server = localhost,1433; Initial Catalog = CourseLibraryDB; User ID = sa; Password = 123.456@CourseLibrary";

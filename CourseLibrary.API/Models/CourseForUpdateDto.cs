@@ -1,9 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using CourseLibrary.API.ValidationAttributes;
+
 namespace CourseLibrary.API.Models
 {
-    public class CourseForUpdateDto
+    public class CourseForUpdateDto : CourseForManipulationDto
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
+        [Required(ErrorMessage = "You should fill out a description")]
+        public override string Description { get => base.Description; set => base.Description = value; }
     }
 }
